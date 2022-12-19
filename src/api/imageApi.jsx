@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL:'http://localhost:3000'
+  baseURL:'https://image-uploader-api-47ru.onrender.com'
 });
