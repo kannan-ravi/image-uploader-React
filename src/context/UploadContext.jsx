@@ -8,6 +8,7 @@ export const UploadProvider = ({ children }) => {
   const [dragActive, setDragActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [bigImage, setBigImage] = useState(false);
   const [uploadedImage, setUploadImage] = useState([{
     "_id": {},
     "filename":"",
@@ -21,7 +22,6 @@ export const UploadProvider = ({ children }) => {
     const getAllImage = async () => {
       const response = await api.get('/upload');
       setUploadImage(response.data);
-      console.log(uploadedImage[0].path)
     }
     getAllImage();
   }, [isLoading])
@@ -31,9 +31,7 @@ export const UploadProvider = ({ children }) => {
     e.stopPropagation();
     if (e.type === "dragenter" || e.type === "dragover") {
       setDragActive(true);
-      console.log(e.type)
     } else if (e.type === "dragleave") {
-      console.log(e.type)
       setDragActive(false);
     }
   };
@@ -41,9 +39,10 @@ export const UploadProvider = ({ children }) => {
 
   const handleChange = async (e) => {
     e.preventDefault();
-    console.log(e.target.files)
-    if (e.target.files) {
+    if (e.target.files && e.target.files[0].size <= 5e+6) {
       handleUpload(e.target.files)
+    } else {
+      setBigImage(true)
     }
   }
 
@@ -73,9 +72,9 @@ export const UploadProvider = ({ children }) => {
   }
   return (
     <UploadContext.Provider value={{
-      dragActive, setDragActive, inputRef, handleDrag, handleChange,  handleUpload, handleDrop,
-      isLoading, setIsLoading, uploadSuccess, setUploadSuccess,
-      uploadedImage, setUploadImage
+      dragActive, inputRef, handleDrag, handleChange, handleDrop, bigImage,
+      isLoading, uploadSuccess,
+      uploadedImage
     }}>
     { children }
     </UploadContext.Provider>

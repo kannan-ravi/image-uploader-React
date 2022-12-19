@@ -1,11 +1,10 @@
 import uploadImage from '../assets/image.svg';
-import { useState, useRef, useContext } from 'react';
-import api from '../api/imageApi'
+import { useContext } from 'react';
 import UploadContext from '../context/UploadContext';
 
 
 const DragDropFile = () => {
-  const{ dragActive, setDragActive, inputRef, handleDrag, handleChange, handleUpload, handleDrop } = useContext(UploadContext)
+  const{ dragActive, inputRef, handleDrag, handleChange, handleDrop, bigImage } = useContext(UploadContext)
 
   return (
 
@@ -43,7 +42,12 @@ const DragDropFile = () => {
             <input type="file" accept='image/*' id='image-input'/>
             <label htmlFor="image-input" className='image--upload'>Choose a file</label>
         </form>
+        <ul className={ bigImage ? 'errorMsg--container' : "errorMsg--container--none" }>
+            <li><span className="material-symbols-outlined">close</span>File should be Image</li>
+            <li><span className="material-symbols-outlined">close</span>Image should be within 5MB</li>
+        </ul>
       </div>
+      
     </section>
   )
 }

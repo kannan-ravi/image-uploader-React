@@ -36,7 +36,8 @@ form {
 
 .drag-drop-section {
   width: 402px;
-  /* height: 469px; */
+  display: flex;
+  flex-direction: column;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   padding: 2.25rem 2rem;
   border-radius: 12px;  
@@ -126,7 +127,36 @@ form {
   bottom: 0px;
   left: 0px;
 }
+.errorMsg--container--none { 
+  display: none;
+}
+.errorMsg--container {
+  align-self: center;
+  justify-self: center;
+  margin-top: 1rem;
+  list-style: none;
 
+}
+
+
+.errorMsg--container li {
+  color: red;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.errorMsg--container li span {
+  font-size: 14px;
+  margin-right: 8px;
+  background-color: red;
+  padding: 3px;
+  border-radius: 50%;
+  color: var(--color-white);
+  
+
+}
 /* !|| -------- Loading Container ------ */
 .loading--container {
   width: 400px;
@@ -173,7 +203,7 @@ form {
   align-items: center;
 }
 
-.material-symbols-outlined {
+.success--icon {
   color: var(--color-white);
   background-color: #219653;
   border-radius: 50%;

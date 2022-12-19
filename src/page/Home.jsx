@@ -5,7 +5,7 @@ import UploadSuccess from '../components/UploadSuccess';
 import UploadContext from '../context/UploadContext';
 
 const Home = () => {
-  const { isLoading, setIsLoading, uploadSuccess, setUploadSuccess } = useContext(UploadContext);
+  const { isLoading, uploadSuccess } = useContext(UploadContext);
 
   return (
       <main>

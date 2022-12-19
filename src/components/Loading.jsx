@@ -1,5 +1,4 @@
 
-
 const Loading = () => {
   return (
     <section className="loading--container">

@@ -1,12 +1,13 @@
 import { useContext } from "react"
-import UploadContext from "../context/UploadContext"
+import UploadContext from "../context/UploadContext";
+
 
 const UploadSuccess = () => {
-  const { uploadedImage, setUploadImage } = useContext(UploadContext)
-
+  const { uploadedImage } = useContext(UploadContext);
+  
   return (
     <section className="success--container">
-      <span className="material-symbols-outlined">check_circle</span>
+      <span className="material-symbols-outlined success--icon">check_circle</span>
       <p className="success--text">Uploaded Successfully!</p>
       <img src={uploadedImage[0].path} alt="" className="success--image"/> 
       <div className="success--copy__container">
